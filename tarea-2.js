@@ -16,3 +16,45 @@ Ejemplo form:
   <div id="resultado">Hola</div>
 *
 * */
+
+const $botonSaludo = document.querySelector("#crear-saludo");
+
+$botonSaludo.onclick = function () {
+  let nombreUser = concatenarNombreUser();
+
+  let edadUser = document.querySelector("#edad").value;
+
+  personalizarSaludo(nombreUser);
+
+  mostrarInfoUser(nombreUser, edadUser);
+
+  return false;
+};
+
+function concatenarNombreUser() {
+  const primerNombre = document.querySelector("#primer-nombre").value;
+
+  const primerApellido = document.querySelector("#primer-apellido").value;
+
+  const segundoNombre = document.querySelector("#segundo-nombre").value
+    ? ` ${document.querySelector("#segundo-nombre").value}`
+    : "";
+
+  const segundoApellido = document.querySelector("#segundo-apellido").value
+    ? ` ${document.querySelector("#segundo-apellido").value}`
+    : "";
+
+  return `${primerNombre}${segundoNombre} ${primerApellido}${segundoApellido}`;
+}
+
+function personalizarSaludo(nombre) {
+  const $saludo = document.querySelector("h1");
+
+  $saludo.innerText = `Bienvenido ${nombre}!`;
+}
+
+function mostrarInfoUser(nombre, edad) {
+  const $infoUser = document.querySelector("#info-user");
+
+  $infoUser.innerText = `${nombre}, ${edad} años`;
+}
